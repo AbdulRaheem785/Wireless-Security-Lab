@@ -40,16 +40,10 @@ Quick reference for capturing WPA/WPA2 handshakes and performing password securi
   <img src="https://cdn.shopify.com/s/files/1/0667/8167/5618/files/11.png?v=1775250630" width="85%">
 </p>
 
----
-
-⚠️ **IMPORTANT NOTICE**
-
-
-> This project is strictly for **educational and authorized security testing only**.
 
 ---
 
-# 🧩 LAB STEPS
+# LAB STEPS
 
 ---
 
