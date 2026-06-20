@@ -126,3 +126,11 @@ Quick reference for capturing WPA/WPA2 handshakes and performing password securi
 
 📚 KEY LEARNING OUTCOMES
 <p align="center"> <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=20&pause=900&color=00E6A8&center=true&vCenter=true&width=800&lines=Core+Wireless+Security+Skills+Gained" /> </p>
+
+Skills Acquired
+📡 Wireless network discovery
+📶 Monitor mode operations
+📦 Packet capture techniques
+🔐 WPA/WPA2 handshake understanding
+📊 Dictionary-based security testing
+🛡️ Wireless security fundamentals
