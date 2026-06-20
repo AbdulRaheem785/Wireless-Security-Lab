@@ -99,6 +99,7 @@ Quick reference for capturing WPA/WPA2 handshakes and performing password securi
 ━━━━━━━━━━━━━━━━━━━━━━━
 
 <p align="center"> <img src="https://cdn.shopify.com/s/files/1/0667/8167/5618/files/9.png?v=1775250399" width="85%"> </p>
+
 🔄 WORKFLOW SUMMARY
 
 ━━━━━━━━━━━━━━━━━━━━━━━
@@ -118,6 +119,7 @@ capture handshake
 deauth (lab)
   ↓
 aircrack-ng attack
+
 📚 KEY LEARNING OUTCOMES
 
 ━━━━━━━━━━━━━━━━━━━━━━━
@@ -128,6 +130,7 @@ Packet capture techniques
 WPA/WPA2 handshake understanding
 Dictionary-based security testing
 Wireless security fundamentals
+
 🛡️ ETHICAL NOTICE
 
 ━━━━━━━━━━━━━━━━━━━━━━━
