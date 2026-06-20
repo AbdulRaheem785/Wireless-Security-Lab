@@ -60,44 +60,46 @@ Quick reference for capturing WPA/WPA2 handshakes and performing password securi
 
 🔵 STEP 2 — Enable Monitor Mode
 
-
+---
 
 📸 Output
 <p align="center"> <img src="https://cdn.shopify.com/s/files/1/0667/8167/5618/files/2.png?v=1775249423" width="85%"> </p>
 
 🔴 STEP 3 — Kill Conflicting Processes
 
-
+---
 
 <p align="center"> <img src="https://cdn.shopify.com/s/files/1/0667/8167/5618/files/3.png?v=1775249422" width="85%"> </p>
 
 🟣 STEP 4 — Scan Wireless Networks
 
-
+---
 
 
 <p align="center"> <img src="https://cdn.shopify.com/s/files/1/0667/8167/5618/files/4.png?v=1775249423" width="85%"> </p>
 🟡 STEP 5 — Target Specific Network
 
-
+---
 
 📸 Output
 <p align="center"> <img src="https://cdn.shopify.com/s/files/1/0667/8167/5618/files/5.png?v=1775249423" width="85%"> </p>
 🟠 STEP 6 — Deauthentication (Lab Only)
 
-
+---
 
 <p align="center"> <img src="https://cdn.shopify.com/s/files/1/0667/8167/5618/files/6.png?v=1775249423" width="85%"> </p>
 ⚫ STEP 7 — Crack Captured Handshake
 
-
+---
 
 <p align="center"> <img src="https://cdn.shopify.com/s/files/1/0667/8167/5618/files/10.png?v=1775250340" width="85%"> </p>
 ⚪ STEP 8 — Wordlist Setup
 
-
+---
 
 <p align="center"> <img src="https://cdn.shopify.com/s/files/1/0667/8167/5618/files/9.png?v=1775250399" width="85%"> </p>
+
+---
 
 🔄 WORKFLOW SUMMARY
 
