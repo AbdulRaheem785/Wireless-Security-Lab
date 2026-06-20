@@ -62,7 +62,7 @@ Quick reference for capturing WPA/WPA2 handshakes and performing password securi
 
 ---
 
-📸 Output
+
 <p align="center"> <img src="https://cdn.shopify.com/s/files/1/0667/8167/5618/files/2.png?v=1775249423" width="85%"> </p>
 
 🔴 STEP 3 — Kill Conflicting Processes
@@ -81,7 +81,7 @@ Quick reference for capturing WPA/WPA2 handshakes and performing password securi
 
 ---
 
-📸 Output
+
 <p align="center"> <img src="https://cdn.shopify.com/s/files/1/0667/8167/5618/files/5.png?v=1775249423" width="85%"> </p>
 🟠 STEP 6 — Deauthentication (Lab Only)
 
