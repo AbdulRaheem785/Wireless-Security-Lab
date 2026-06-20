@@ -1,130 +1,176 @@
-<div class="container">
-<p style="text-align: center; color: #aaa; font-size: 14px; margin-bottom: 20px;">Quick reference for capturing WPA/WPA2 handshakes and performing basic password cracking using Aircrack-ng.</p>
-<div class="section">
-<h2>Environment Setup</h2>
-<div class="code">OS: Kali Linux (VMware / VirtualBox)<br>Wireless Adapter: External USB adapter (Monitor Mode supported)<br>Tools: Aircrack-ng suite<br>Wordlist: rockyou.txt</div>
-<div class="purpose">This guide assumes you are running Kali Linux in a virtual machine with a compatible external wireless adapter that supports monitor mode and packet injection.</div>
-<div class="screenshot">
-  <img src="https://cdn.shopify.com/s/files/1/0667/8167/5618/files/11.png?v=1775250630" alt="Kali Linux setup screensho">
-</div>
-<div class="caption">VMware Kali Linux with Aircrack-ng installed</div>
-</div>
-<div class="warning">⚠️ Use only on networks you own or have permission to test.</div>
-<!-- Step 1 -->
-<div class="section">
-<h2>1. Check Wireless Adapter</h2>
-<div data-code="iwconfig" class="code">iwconfig <button class="copy-btn">Copy</button>
-</div>
-<div class="purpose">Displays available wireless interfaces (e.g., wlan0).</div>
-<div class="screenshot">
-  <img src="https://cdn.shopify.com/s/files/1/0667/8167/5618/files/1.png?v=1775249423" alt="iwconfig output">
-</div>
-<div class="caption">Example output showing wlan0 interface</div>
-</div>
-<!-- Step 2 -->
-<div class="section">
-<h2>2. Enable Monitor Mode</h2>
-<div data-code="airmon-ng start wlan0" class="code">airmon-ng start wlan0 <button class="copy-btn">Copy</button>
-</div>
-<div class="purpose">Enables monitor mode and creates wlan0.</div>
-<div class="screenshot">
-  <img src="https://cdn.shopify.com/s/files/1/0667/8167/5618/files/2.png?v=1775249423" alt="monitor mode enabled">
-</div>
-<div class="caption">Monitor mode enabled (wlan0 created)</div>
-</div>
-<!-- Step 3 -->
-<div class="section">
-<h2>3. Kill Conflicting Processes</h2>
-<div data-code="airmon-ng check kill" class="code">airmon-ng check kill <button class="copy-btn">Copy</button>
-</div>
-<div class="purpose">Stops interfering services.</div>
-<div class="screenshot">
-  <img src="https://cdn.shopify.com/s/files/1/0667/8167/5618/files/3.png?v=1775249422" alt="killing processes">
-</div>
-<div class="caption">Processes stopped to prevent interference</div>
-</div>
-<!-- Step 4 -->
-<div class="section">
-<h2>4. Scan Networks</h2>
-<div data-code="airodump-ng wlan0mon" class="code">airodump-ng wlan0 <button class="copy-btn">Copy</button>
-</div>
-<div class="purpose">Shows nearby networks and clients.</div>
-<div class="screenshot">
-  <img src="https://cdn.shopify.com/s/files/1/0667/8167/5618/files/4.png?v=1775249423" alt="airodump-ng scan">
-</div>
-<div class="caption">Scanning for networks and clients</div>
-</div>
-<!-- Step 5 -->
-<div class="section">
-<h2>5. Target Specific Network</h2>
-<div data-code="airodump-ng --bssid [BSSID] -c [CHANNEL] --write capture wlan0" class="code">airodump-ng --bssid [BSSID] -c [CHANNEL] --write capture wlan0 <button class="copy-btn">Copy</button>
-</div>
-<div class="purpose">Captures packets from a target network.</div>
-<div class="screenshot">
-  <img src="https://cdn.shopify.com/s/files/1/0667/8167/5618/files/5.png?v=1775249423" alt="target network capture">
-</div>
-<div class="caption">Capturing packets for the target network</div>
-</div>
-<!-- Step 6 -->
-<div class="section">
-<h2>6. Deauthentication</h2>
-<div data-code="aireplay-ng --deauth 0 -a [BSSID] wlan0" class="code">aireplay-ng --deauth 0 -a [BSSID] wlan0 <button class="copy-btn">Copy</button>
-</div>
-<div class="purpose">Forces reconnect to capture handshake.</div>
-<div class="screenshot">
-  <img src="https://cdn.shopify.com/s/files/1/0667/8167/5618/files/6.png?v=1775249423" alt="deauth attack">
-</div>
-<div class="caption">Deauthentication to capture handshake</div>
-</div>
-<!-- Step 7 -->
-<div class="section">
-<h2>7. Crack Password</h2>
-<div data-code="aircrack-ng capture.cap -w /usr/share/wordlists/rockyou.txt" class="code">aircrack-ng capture.cap -w /usr/share/wordlists/rockyou.txt <button class="copy-btn">Copy</button>
-</div>
-<div class="purpose">Attempts password cracking using a wordlist.</div>
-<div class="screenshot">
-  <img src="https://cdn.shopify.com/s/files/1/0667/8167/5618/files/10.png?v=1775250340" alt="aircrack-ng cracking">
-</div>
-<div class="caption">Password cracking using rockyou.txt</div>
-</div>
-<!-- Step 8 -->
-<div class="section">
-<h2>8. Wordlist Setup</h2>
-<div data-code="gzip -d /usr/share/wordlists/rockyou.txt.gz" class="code">gzip -d /usr/share/wordlists/rockyou.txt.gz <button class="copy-btn">Copy</button>
-</div>
-<div class="purpose">Unzips rockyou.txt before use.</div>
-<div class="screenshot">
-  <img src="https://cdn.shopify.com/s/files/1/0667/8167/5618/files/9.png?v=1775250399" alt="unzip rockyou">
-</div>
-<div class="caption">Unzipping rockyou.txt for cracking</div>
-</div>
-<!-- Workflow -->
-<div class="section">
-<h2>Workflow</h2>
-<div data-code="iwconfig → airmon-ng start wlan0 → airmon-ng check kill → airodump-ng wlan0m → capture target → deauth → aircrack-ng" class="code workflow">iwconfig → airmon-ng start wlan0 → airmon-ng check kill → airodump-ng wlan0 → capture target → deauth → aircrack-ng <button class="copy-btn">Copy</button>
-</div>
-</div>
-<div class="footer">Aircrack-ng WiFi Attack Cheat Sheet</div>
-</div>
-<p> </p>
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-  const buttons = document.querySelectorAll(".copy-btn");
+<p align="center">
+  <img src="images/banner.png" width="100%">
+</p>
 
-  buttons.forEach(btn => {
-    btn.addEventListener("click", function () {
-      const codeBlock = btn.parentElement;
+<h1 align="center">📡 WPA/WPA2 Aircrack-ng Security Lab</h1>
 
-      // Get clean text (remove "Copy" text)
-      let text = codeBlock.innerText.replace("Copy", "").trim();
+<p align="center">
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=22&pause=900&color=00FFCC&center=true&vCenter=true&width=900&lines=Wireless+Security+Assessment+Lab;Aircrack-ng+Handshake+Capture;WPA%2FWPA2+Security+Analysis;Cybersecurity+Learning+Project" />
+</p>
 
-      navigator.clipboard.writeText(text).then(() => {
-        btn.innerText = "Copied!";
-        setTimeout(() => {
-          btn.innerText = "Copy";
-        }, 1500);
-      });
-    });
-  });
-});
-</script>
+<p align="center">
+  <img src="https://img.shields.io/badge/Kali-Linux-557C94?style=for-the-badge&logo=kalilinux&logoColor=white">
+  <img src="https://img.shields.io/badge/Aircrack--ng-Wireless-green?style=for-the-badge">
+  <img src="https://img.shields.io/badge/WiFi-Security-blue?style=for-the-badge">
+  <img src="https://img.shields.io/badge/Cybersecurity-Lab-red?style=for-the-badge">
+</p>
+
+---
+
+# 📌 PROJECT OVERVIEW
+━━━━━━━━━━━━━━━━━━━━━━━
+
+Quick reference for capturing WPA/WPA2 handshakes and performing password security testing using Aircrack-ng in a controlled lab environment.
+
+---
+
+# ⚙️ ENVIRONMENT SETUP
+━━━━━━━━━━━━━━━━━━━━━━━
+
+- 🖥️ OS: Kali Linux (VMware / VirtualBox)
+- 📡 Wireless Adapter: External USB (Monitor Mode supported)
+- 🛠️ Tools: Aircrack-ng suite
+- 📚 Wordlist: rockyou.txt
+
+---
+
+## 📸 Lab Setup
+
+<p align="center">
+  <img src="https://cdn.shopify.com/s/files/1/0667/8167/5618/files/11.png?v=1775250630" width="85%">
+</p>
+
+---
+
+⚠️ **IMPORTANT NOTICE**
+━━━━━━━━━━━━━━━━━━━━━━━
+
+> This project is strictly for **educational and authorized security testing only**.
+
+---
+
+# 🧩 LAB STEPS
+━━━━━━━━━━━━━━━━━━━━━━━
+
+---
+
+## 🟢 STEP 1 — Check Wireless Adapter
+━━━━━━━━━━━━━━━━━━━━━━━
+
+
+iwconfig
+
+📌 Displays available wireless interfaces (e.g., wlan0)
+
+📸 Output
+<p align="center"> <img src="https://cdn.shopify.com/s/files/1/0667/8167/5618/files/1.png?v=1775249423" width="85%"> </p>
+🔵 STEP 2 — Enable Monitor Mode
+
+━━━━━━━━━━━━━━━━━━━━━━━
+
+airmon-ng start wlan0
+
+📌 Enables monitor mode for packet capture
+
+📸 Output
+<p align="center"> <img src="https://cdn.shopify.com/s/files/1/0667/8167/5618/files/2.png?v=1775249423" width="85%"> </p>
+🔴 STEP 3 — Kill Conflicting Processes
+
+━━━━━━━━━━━━━━━━━━━━━━━
+
+airmon-ng check kill
+
+📌 Stops background services interfering with monitoring
+
+📸 Output
+<p align="center"> <img src="https://cdn.shopify.com/s/files/1/0667/8167/5618/files/3.png?v=1775249422" width="85%"> </p>
+🟣 STEP 4 — Scan Wireless Networks
+
+━━━━━━━━━━━━━━━━━━━━━━━
+
+airodump-ng wlan0
+
+📌 Lists nearby WiFi networks and connected devices
+
+📸 Output
+<p align="center"> <img src="https://cdn.shopify.com/s/files/1/0667/8167/5618/files/4.png?v=1775249423" width="85%"> </p>
+🟡 STEP 5 — Target Specific Network
+
+━━━━━━━━━━━━━━━━━━━━━━━
+
+airodump-ng --bssid [BSSID] -c [CHANNEL] --write capture wlan0
+
+📌 Captures packets from selected network
+
+📸 Output
+<p align="center"> <img src="https://cdn.shopify.com/s/files/1/0667/8167/5618/files/5.png?v=1775249423" width="85%"> </p>
+🟠 STEP 6 — Deauthentication (Lab Only)
+
+━━━━━━━━━━━━━━━━━━━━━━━
+
+aireplay-ng --deauth 0 -a [BSSID] wlan0
+
+📌 Forces client reconnection to capture handshake (lab only)
+
+📸 Output
+<p align="center"> <img src="https://cdn.shopify.com/s/files/1/0667/8167/5618/files/6.png?v=1775249423" width="85%"> </p>
+⚫ STEP 7 — Crack Captured Handshake
+
+━━━━━━━━━━━━━━━━━━━━━━━
+
+aircrack-ng capture.cap -w /usr/share/wordlists/rockyou.txt
+
+📌 Attempts password cracking using dictionary attack
+
+📸 Output
+<p align="center"> <img src="https://cdn.shopify.com/s/files/1/0667/8167/5618/files/10.png?v=1775250340" width="85%"> </p>
+⚪ STEP 8 — Wordlist Setup
+
+━━━━━━━━━━━━━━━━━━━━━━━
+
+gzip -d /usr/share/wordlists/rockyou.txt.gz
+
+📌 Extracts wordlist for cracking
+
+📸 Output
+<p align="center"> <img src="https://cdn.shopify.com/s/files/1/0667/8167/5618/files/9.png?v=1775250399" width="85%"> </p>
+🔄 WORKFLOW SUMMARY
+
+━━━━━━━━━━━━━━━━━━━━━━━
+
+iwconfig
+  ↓
+airmon-ng start wlan0
+  ↓
+airmon-ng check kill
+  ↓
+airodump-ng wlan0
+  ↓
+target selection
+  ↓
+capture handshake
+  ↓
+deauth (lab)
+  ↓
+aircrack-ng attack
+📚 KEY LEARNING OUTCOMES
+
+━━━━━━━━━━━━━━━━━━━━━━━
+
+Wireless network discovery
+Monitor mode operations
+Packet capture techniques
+WPA/WPA2 handshake understanding
+Dictionary-based security testing
+Wireless security fundamentals
+🛡️ ETHICAL NOTICE
+
+━━━━━━━━━━━━━━━━━━━━━━━
+
+🚫 Only use in authorized lab environments
+
+✔ Allowed:
+
+Cybersecurity training
+Educational labs
+Authorized testing
