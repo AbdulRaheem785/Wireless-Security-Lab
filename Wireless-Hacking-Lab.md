@@ -95,11 +95,11 @@ Quick reference for capturing WPA/WPA2 handshakes and performing password securi
 
 ---
 
----
 
-## 🔄 WORKFLOW SUMMARY
+## WORKFLOW SUMMARY
 <p align="center">
   <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=20&pause=900&color=00FFCC&center=true&vCenter=true&width=700&lines=Wireless+Attack+Workflow+Pipeline;Step-by-Step+Security+Assessment+Flow" />
+
 </p>
 📡 iwconfig
       │
@@ -123,5 +123,6 @@ Quick reference for capturing WPA/WPA2 handshakes and performing password securi
       │
       ▼
 🔓 aircrack-ng attack
+
 📚 KEY LEARNING OUTCOMES
 <p align="center"> <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=20&pause=900&color=00E6A8&center=true&vCenter=true&width=800&lines=Core+Wireless+Security+Skills+Gained" /> </p>
