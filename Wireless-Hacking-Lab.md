@@ -1,10 +1,4 @@
 <p align="center">
-  <img src="images/banner.png" width="100%">
-</p>
-
-<h1 align="center">📡 WPA/WPA2 Aircrack-ng Security Lab</h1>
-
-<p align="center">
   <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=22&pause=900&color=00FFCC&center=true&vCenter=true&width=900&lines=Wireless+Security+Assessment+Lab;Aircrack-ng+Handshake+Capture;WPA%2FWPA2+Security+Analysis;Cybersecurity+Learning+Project" />
 </p>
 
